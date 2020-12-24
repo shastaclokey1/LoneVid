@@ -44,7 +44,8 @@ app.get("/dashboard", function(request, response)
         {
             if ( err ) 
             {
-                throw err;
+                console.log(err);
+                response.redirect("/dashboard?playlistId=" + request.query.playlistId);
             }
 
             response.render("dashboard", {dashboardVideos: playlist.videos});
