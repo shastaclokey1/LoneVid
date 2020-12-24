@@ -45,10 +45,16 @@ app.get("/dashboard", function(request, response)
             if ( err ) 
             {
                 console.log(err);
-                response.redirect("/dashboard?playlistId=" + request.query.playlistId);
             }
 
-            response.render("dashboard", {dashboardVideos: playlist.videos});
+            if (playlist != null)
+            {
+                response.render("dashboard", {dashboardVideos: playlist.videos});
+            }
+            else
+            {
+                response.render("/");
+            }
         });
 });
 
