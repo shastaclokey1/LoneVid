@@ -53,7 +53,7 @@ app.get("/dashboard", function(request, response)
             }
             else
             {
-                response.render("/");
+                response.redirect("/");
             }
         });
 });
