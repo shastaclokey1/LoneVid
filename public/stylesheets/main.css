@@ -2,6 +2,12 @@
     height: 50px;
 }
 
+.dashboardVideo {
+    width: 25%;
+    padding: 50px;
+    padding-bottom: 100px;
+}
+
 li {
     height: 125px;
     font-size: 25px;
