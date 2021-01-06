@@ -46,8 +46,7 @@ app.get("/dashboard", function(request, response)
         {
             if ( err ) 
             {
-                console.log(err);
-                response.redirect("/");
+                throw err;
             }
 
             response.render("dashboard", {dashboardVideos: ytSearchResults.videos});
@@ -61,8 +60,7 @@ app.get("/dashboard", function(request, response)
         {
             if ( err ) 
             {
-                console.log(err);
-                response.redirect("/");
+                throw err;
             }
     
             response.render("dashboard", {dashboardVideos: playlist.videos});
@@ -81,8 +79,7 @@ app.get("/watch", function(request, response)
     {
         if ( err ) 
         {
-            console.log(err);
-            response.redirect("/");
+            throw err;
         }
 
         response.render("watch", {videoDetails: video});
