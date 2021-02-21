@@ -51,7 +51,8 @@ app.get("/dashboard", function(request, response)
         {
             if ( err ) 
             {
-                throw err;
+                console.log(err);
+                response.redirect("/");
             }
 
             response.render("dashboard", {dashboardVideos: ytSearchResults.videos});
@@ -65,7 +66,8 @@ app.get("/dashboard", function(request, response)
         {
             if ( err ) 
             {
-                throw err;
+                console.log(err);
+                response.redirect("/");
             }
     
             response.render("dashboard", {dashboardVideos: playlist.videos});
@@ -84,10 +86,12 @@ app.get("/watch", function(request, response)
     {
         if ( err ) 
         {
-            throw err;
+            console.log(err);
+            response.redirect("/");
         }
 
-        response.render("watch", {videoDetails: video});
+        var descriptionArray = video.description.split('\n');
+        response.render("watch", {videoDetails: video, videoDescriptionLines: descriptionArray});
     });
 });
 
