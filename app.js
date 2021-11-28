@@ -147,28 +147,35 @@ app.get("/watch", function(request, response)
             console.log(err);
             response.redirect("/");
         }
-
-        if (video.author !== undefined)
+        else if (video === undefined)
         {
-            var channelURLArray = video.author.url.split("/");
-            var channelPlaylistId = channelURLArray[channelURLArray.length-1].replace("UC", "UU");
+            console.log("video was undefined");
+            response.redirect("/");
         }
         else
         {
-            var channelPlaylistId = "UUagiBBx1prefrlsDzDxuA9A";
-        }
-        
+            if (video.author !== undefined)
+            {
+                var channelURLArray = video.author.url.split("/");
+                var channelPlaylistId = channelURLArray[channelURLArray.length-1].replace("UC", "UU");
+            }
+            else
+            {
+                var channelPlaylistId = "UUagiBBx1prefrlsDzDxuA9A";
+            }
+            
 
-        if (video.description !== undefined)
-        {
-            var descriptionArray = video.description.split('\n');
+            if (video.description !== undefined)
+            {
+                var descriptionArray = video.description.split('\n');
+            }
+            else
+            {
+                var descriptionArray = "No description found";
+            }
+            
+            response.render("watch", {videoDetails: video, videoDescriptionLines: descriptionArray, channelPlaylistId: channelPlaylistId});
         }
-        else
-        {
-            var descriptionArray = "No description found";
-        }
-        
-        response.render("watch", {videoDetails: video, videoDescriptionLines: descriptionArray, channelPlaylistId: channelPlaylistId});
     });
 });
 
