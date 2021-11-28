@@ -148,7 +148,7 @@ app.get("/watch", function(request, response)
             response.redirect("/");
         }
 
-        if (video.author.url !== null)
+        if (video.author !== undefined)
         {
             var channelURLArray = video.author.url.split("/");
             var channelPlaylistId = channelURLArray[channelURLArray.length-1].replace("UC", "UU");
@@ -159,7 +159,7 @@ app.get("/watch", function(request, response)
         }
         
 
-        if (video.description !== null)
+        if (video.description !== undefined)
         {
             var descriptionArray = video.description.split('\n');
         }
