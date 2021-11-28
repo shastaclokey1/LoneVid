@@ -148,9 +148,26 @@ app.get("/watch", function(request, response)
             response.redirect("/");
         }
 
-        var channelURLArray = video.author.url.split("/");
-        var channelPlaylistId = channelURLArray[channelURLArray.length-1].replace("UC", "UU");
-        var descriptionArray = video.description.split('\n');
+        if (video.author.url !== null)
+        {
+            var channelURLArray = video.author.url.split("/");
+            var channelPlaylistId = channelURLArray[channelURLArray.length-1].replace("UC", "UU");
+        }
+        else
+        {
+            var channelPlaylistId = "UUagiBBx1prefrlsDzDxuA9A";
+        }
+        
+
+        if (video.description !== null)
+        {
+            var descriptionArray = video.description.split('\n');
+        }
+        else
+        {
+            var descriptionArray = "No description found";
+        }
+        
         response.render("watch", {videoDetails: video, videoDescriptionLines: descriptionArray, channelPlaylistId: channelPlaylistId});
     });
 });
