@@ -56,8 +56,10 @@ app.get("/dashboard", function(request, response)
                 console.log(err);
                 response.redirect("/");
             }
-
-            response.render("searchDashboard", {dashboardVideos: ytSearchResults.videos, searchKey: request.query.searchKey});
+            else
+            {
+                response.render("searchDashboard", {dashboardVideos: ytSearchResults.videos, searchKey: request.query.searchKey});
+            }
         });
     }
     else
@@ -71,16 +73,18 @@ app.get("/dashboard", function(request, response)
                 console.log(err);
                 response.redirect("/");
             }
+            else
+            {
+                var channelPlaylistId = request.query.playlistId;
 
-            var channelPlaylistId = request.query.playlistId;
-
-            response.render("channelDashboard", 
-                        {
-                            dashboardVideos: playlist.videos, 
-                            isChannelInFavorites: IsChannelInFavorites(channelPlaylistId), 
-                            channelPlaylistId: channelPlaylistId,
-                            author: playlist.videos[0].author
-                        });
+                response.render("channelDashboard", 
+                            {
+                                dashboardVideos: playlist.videos, 
+                                isChannelInFavorites: IsChannelInFavorites(channelPlaylistId), 
+                                channelPlaylistId: channelPlaylistId,
+                                author: playlist.videos[0].author
+                            });
+            }
         });
     }
 
@@ -145,11 +149,6 @@ app.get("/watch", function(request, response)
         if ( err ) 
         {
             console.log(err);
-            response.redirect("/");
-        }
-        else if (video === undefined)
-        {
-            console.log("video was undefined");
             response.redirect("/");
         }
         else
