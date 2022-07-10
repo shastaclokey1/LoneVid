@@ -25,9 +25,9 @@ var listIdsForAllChannels = [
     ['UUtDdB-mu47GeMOroAQOb0Sg', "Snowboard Pro Camp"],
     ['UUhBBKdDfp-Gy5-l8s7LCfbQ', "Shasta Clokey"],
     ['UUxHTM1FYxeC4F7xDsBVltGg', "Wim Hof"],
-    ['UUxHTM1FYxeC4F7xDsBVltGg', "Dave Lee"],
-    ['UUxHTM1FYxeC4F7xDsBVltGg', "Ninja Nerd"],
-    ['UUxHTM1FYxeC4F7xDsBVltGg', "Whole Mars"],
+    ['UUi2G5aQTN0YwGIfnt1u7Nbg', "Dave Lee"],
+    ['UU6QYFutt9cluQ3uSM963_KQ', "Ninja Nerd"],
+    ['UU64s9c3fmDQ1as6nD83fKOA', "Whole Mars"],
 ];
 
 var app = express();
