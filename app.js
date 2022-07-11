@@ -156,14 +156,10 @@ app.get("/watch", function(request, response)
         }
         else
         {
-            if (video.author !== undefined)
+            var channelUploadsPlaylistId = "UUagiBBx1prefrlsDzDxuA9A";
+            if (video.channelUploadsPlaylistId !== undefined)
             {
-                var channelURLArray = video.author.url.split("/");
-                var channelPlaylistId = channelURLArray[channelURLArray.length-1].replace("UC", "UU");
-            }
-            else
-            {
-                var channelPlaylistId = "UUagiBBx1prefrlsDzDxuA9A";
+                channelUploadsPlaylistId = video.channelUploadsPlaylistId;
             }
             
 
@@ -176,7 +172,7 @@ app.get("/watch", function(request, response)
                 var descriptionArray = "No description found";
             }
             
-            response.render("watch", {videoDetails: video, videoDescriptionLines: descriptionArray, channelPlaylistId: channelPlaylistId});
+            response.render("watch", {videoDetails: video, videoDescriptionLines: descriptionArray, channelUploadsPlaylistId: channelUploadsPlaylistId});
         }
     });
 });
